@@ -72,8 +72,8 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Padding(
         padding: const EdgeInsets.only(
           top: 70,
-          right: 10,
-          left: 10,
+          right: 20,
+          left: 20,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Container(
                 alignment: Alignment.bottomCenter,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
@@ -152,49 +152,52 @@ class _HomeScreenState extends State<HomeScreen> {
               flex: 2,
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      TextButton(
-                        onPressed: () => onTimePressed(fifteen),
-                        child: TimeButton(
-                          setting: '15',
-                          settingSeconds: settingButton,
-                          settedButton: fifteen,
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        TextButton(
+                          onPressed: () => onTimePressed(fifteen),
+                          child: TimeButton(
+                            setting: '15',
+                            settingSeconds: settingButton,
+                            settedButton: fifteen,
+                          ),
                         ),
-                      ),
-                      TextButton(
-                        onPressed: () => onTimePressed(twenty),
-                        child: TimeButton(
-                          setting: '20',
-                          settingSeconds: settingSeconds,
-                          settedButton: twenty,
+                        TextButton(
+                          onPressed: () => onTimePressed(twenty),
+                          child: TimeButton(
+                            setting: '20',
+                            settingSeconds: settingSeconds,
+                            settedButton: twenty,
+                          ),
                         ),
-                      ),
-                      TextButton(
-                        onPressed: () => onTimePressed(twentyFive),
-                        child: TimeButton(
-                          setting: '25',
-                          settingSeconds: settingSeconds,
-                          settedButton: twentyFive,
+                        TextButton(
+                          onPressed: () => onTimePressed(twentyFive),
+                          child: TimeButton(
+                            setting: '25',
+                            settingSeconds: settingSeconds,
+                            settedButton: twentyFive,
+                          ),
                         ),
-                      ),
-                      TextButton(
-                        onPressed: () => onTimePressed(thirty),
-                        child: TimeButton(
-                          setting: '30',
-                          settingSeconds: settingSeconds,
-                          settedButton: thirty,
+                        TextButton(
+                          onPressed: () => onTimePressed(thirty),
+                          child: TimeButton(
+                            setting: '30',
+                            settingSeconds: settingSeconds,
+                            settedButton: thirty,
+                          ),
                         ),
-                      ),
-                      TextButton(
-                        onPressed: () => onTimePressed(thirtyFive),
-                        child: TimeButton(
-                          setting: '35',
-                          settingSeconds: settingSeconds,
-                          settedButton: thirtyFive,
+                        TextButton(
+                          onPressed: () => onTimePressed(thirtyFive),
+                          child: TimeButton(
+                            setting: '35',
+                            settingSeconds: settingSeconds,
+                            settedButton: thirtyFive,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     height: 60,
@@ -218,7 +221,16 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Flexible(
               flex: 1,
-              child: Container(),
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      Text('0/4'),
+                      Text('ROUND'),
+                    ],
+                  )
+                ],
+              ),
             ),
           ],
         ),
