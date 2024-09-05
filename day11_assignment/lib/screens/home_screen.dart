@@ -222,11 +222,46 @@ class _HomeScreenState extends State<HomeScreen> {
             Flexible(
               flex: 1,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Column(
                     children: [
-                      Text('0/4'),
-                      Text('ROUND'),
+                      Text(
+                        '0/4',
+                        style: TextStyle(
+                          fontSize: 26,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white.withOpacity(0.5),
+                        ),
+                      ),
+                      const Text(
+                        'ROUND',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        '0/4',
+                        style: TextStyle(
+                          fontSize: 26,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white.withOpacity(0.5),
+                        ),
+                      ),
+                      const Text(
+                        'GOAL',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white,
+                        ),
+                      ),
                     ],
                   )
                 ],
