@@ -149,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 50,
             ),
             Flexible(
-              flex: 3,
+              flex: 2,
               child: Column(
                 children: [
                   Row(
@@ -196,13 +196,22 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
-                  IconButton(
-                    onPressed: isRunning ? onPausePressed : onStartPressed,
-                    icon: Icon(
-                      isRunning ? Icons.pause : Icons.play_arrow_rounded,
+                  const SizedBox(
+                    height: 60,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 53, 52, 52)
+                            .withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(50)),
+                    child: IconButton(
+                      onPressed: isRunning ? onPausePressed : onStartPressed,
+                      icon: Icon(
+                        isRunning ? Icons.pause : Icons.play_arrow_rounded,
+                      ),
+                      color: Colors.white,
+                      iconSize: 80,
                     ),
-                    color: Colors.white,
-                    iconSize: 80,
                   )
                 ],
               ),
