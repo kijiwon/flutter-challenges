@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:day11_assignment/widget/timeButton.dart';
+import 'package:day11_assignment/widget/time_button.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,13 +11,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late Timer timer;
   static const fifteen = 900;
   static const twenty = 1200;
   static const twentyFive = 1500;
   static const thirty = 1800;
   static const thirtyFive = 2100;
-  late Timer timer;
   bool isRunning = false;
+  int totalRounds = 0;
+  int totalGoals = 0;
 
   // 초기값은 25분
   int totalSeconds = twentyFive;
@@ -43,9 +45,24 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void onTick(Timer timer) {
-    setState(() {
-      totalSeconds--;
-    });
+    if (totalSeconds == 0) {
+      setState(() {
+        totalRounds++;
+        isRunning = false;
+        totalSeconds = settingSeconds;
+      });
+      if (totalRounds == 2) {
+        setState(() {
+          totalGoals++;
+          totalRounds = 0;
+        });
+      }
+      timer.cancel();
+    } else {
+      setState(() {
+        totalSeconds--;
+      });
+    }
   }
 
   void onStartPressed() {
@@ -227,7 +244,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Column(
                     children: [
                       Text(
-                        '0/4',
+                        '$totalRounds/2',
                         style: TextStyle(
                           fontSize: 26,
                           fontWeight: FontWeight.w700,
@@ -247,7 +264,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Column(
                     children: [
                       Text(
-                        '0/4',
+                        '$totalGoals/4',
                         style: TextStyle(
                           fontSize: 26,
                           fontWeight: FontWeight.w700,
