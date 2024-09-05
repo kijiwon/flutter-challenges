@@ -108,7 +108,152 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Flexible(
               flex: 3,
-              child: Container(),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      TextButton(
+                        onPressed: () {},
+                        child: Container(
+                          padding: const EdgeInsets.only(
+                            top: 3,
+                            left: 12,
+                            right: 12,
+                            bottom: 3,
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white, width: 1.5),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: const Text(
+                            '15',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Container(
+                          padding: const EdgeInsets.only(
+                            top: 3,
+                            left: 12,
+                            right: 12,
+                            bottom: 3,
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white, width: 1.5),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: const Text(
+                            '20',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Container(
+                          padding: const EdgeInsets.only(
+                            top: 3,
+                            left: 12,
+                            right: 12,
+                            bottom: 3,
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white, width: 1.5),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: const Text(
+                            '25',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Container(
+                          padding: const EdgeInsets.only(
+                            top: 3,
+                            left: 12,
+                            right: 12,
+                            bottom: 3,
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white, width: 1.5),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: const Text(
+                            '30',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Container(
+                          padding: const EdgeInsets.only(
+                            top: 3,
+                            left: 12,
+                            right: 12,
+                            bottom: 3,
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white, width: 1.5),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: const Text(
+                            '15',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Container(
+                          padding: const EdgeInsets.only(
+                            top: 3,
+                            left: 12,
+                            right: 12,
+                            bottom: 3,
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white, width: 1.5),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: const Text(
+                            '35',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
             Flexible(
               flex: 1,
