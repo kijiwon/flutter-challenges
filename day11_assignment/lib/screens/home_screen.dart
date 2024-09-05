@@ -11,7 +11,23 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      body: Column(
+        children: [
+          Flexible(
+            flex: 1,
+            child: Container(),
+          ),
+          Flexible(
+            flex: 3,
+            child: Container(),
+          ),
+          Flexible(
+            flex: 1,
+            child: Container(),
+          ),
+        ],
+      ),
     );
   }
 }
