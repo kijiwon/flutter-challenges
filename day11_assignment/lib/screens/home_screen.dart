@@ -17,11 +17,23 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // 초기값은 25분
   int totalSeconds = twentyFive;
+  // 유저가 누른 시간
+  int settingSeconds = twentyFive;
+  // 버튼
+  int settingButton = twentyFive;
 
   // 초 포맷
   String format(int seconds) {
     var duration = Duration(seconds: seconds);
     return duration.toString().split('.').first.substring(2, 7);
+  }
+
+  // time setting
+  void onTimePressed(int settedTime) {
+    setState(() {
+      totalSeconds = settedTime;
+      settingSeconds = settedTime;
+    });
   }
 
   @override
@@ -31,21 +43,18 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Padding(
         padding: const EdgeInsets.only(
           top: 70,
+          right: 10,
+          left: 10,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 20,
-              ),
-              child: Text(
-                'POMOTIMER',
-                style: TextStyle(
-                  color: Theme.of(context).cardColor,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
+            Text(
+              'POMOTIMER',
+              style: TextStyle(
+                color: Theme.of(context).cardColor,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
               ),
             ),
             Flexible(
@@ -117,38 +126,43 @@ class _HomeScreenState extends State<HomeScreen> {
                   Row(
                     children: [
                       TextButton(
-                        onPressed: () {},
-                        child: const TimeButton(
+                        onPressed: () => onTimePressed(fifteen),
+                        child: TimeButton(
                           setting: '15',
-                          isSetted: false,
+                          settingSeconds: settingButton,
+                          settedButton: fifteen,
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
-                        child: const TimeButton(
+                        onPressed: () => onTimePressed(twenty),
+                        child: TimeButton(
                           setting: '20',
-                          isSetted: false,
+                          settingSeconds: settingSeconds,
+                          settedButton: twenty,
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
-                        child: const TimeButton(
+                        onPressed: () => onTimePressed(twentyFive),
+                        child: TimeButton(
                           setting: '25',
-                          isSetted: true,
+                          settingSeconds: settingSeconds,
+                          settedButton: twentyFive,
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
-                        child: const TimeButton(
+                        onPressed: () => onTimePressed(thirty),
+                        child: TimeButton(
                           setting: '30',
-                          isSetted: false,
+                          settingSeconds: settingSeconds,
+                          settedButton: thirty,
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
-                        child: const TimeButton(
+                        onPressed: () => onTimePressed(thirtyFive),
+                        child: TimeButton(
                           setting: '35',
-                          isSetted: false,
+                          settingSeconds: settingSeconds,
+                          settedButton: thirtyFive,
                         ),
                       ),
                     ],

@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 
-class TimeButton extends StatelessWidget {
+class TimeButton extends StatefulWidget {
   const TimeButton({
     super.key,
     required this.setting,
-    required this.isSetted,
+    required this.settingSeconds,
+    required this.settedButton,
   });
 
-  final setting, isSetted;
+  final setting, settingSeconds, settedButton;
 
+  @override
+  State<TimeButton> createState() => _TimeButtonState();
+}
+
+class _TimeButtonState extends State<TimeButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,13 +27,16 @@ class TimeButton extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(color: Colors.white, width: 1.5),
         borderRadius: BorderRadius.circular(5),
-        color:
-            isSetted ? Colors.white : Theme.of(context).scaffoldBackgroundColor,
+        color: widget.settingSeconds == widget.settedButton
+            ? Colors.white
+            : Theme.of(context).scaffoldBackgroundColor,
       ),
       child: Text(
-        setting,
+        widget.setting,
         style: TextStyle(
-          color: isSetted ? Colors.red : Colors.white,
+          color: widget.settingSeconds == widget.settedButton
+              ? Colors.red
+              : Colors.white,
           fontSize: 18,
           fontWeight: FontWeight.w700,
         ),
