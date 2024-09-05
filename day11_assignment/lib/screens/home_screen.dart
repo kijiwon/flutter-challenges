@@ -1,3 +1,4 @@
+import 'package:day11_assignment/widget/timeButton.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -106,6 +107,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 50,
+            ),
             Flexible(
               flex: 3,
               child: Column(
@@ -114,140 +118,37 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       TextButton(
                         onPressed: () {},
-                        child: Container(
-                          padding: const EdgeInsets.only(
-                            top: 3,
-                            left: 12,
-                            right: 12,
-                            bottom: 3,
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white, width: 1.5),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: const Text(
-                            '15',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
+                        child: const TimeButton(
+                          setting: '15',
+                          isSetted: false,
                         ),
                       ),
                       TextButton(
                         onPressed: () {},
-                        child: Container(
-                          padding: const EdgeInsets.only(
-                            top: 3,
-                            left: 12,
-                            right: 12,
-                            bottom: 3,
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white, width: 1.5),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: const Text(
-                            '20',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
+                        child: const TimeButton(
+                          setting: '20',
+                          isSetted: false,
                         ),
                       ),
                       TextButton(
                         onPressed: () {},
-                        child: Container(
-                          padding: const EdgeInsets.only(
-                            top: 3,
-                            left: 12,
-                            right: 12,
-                            bottom: 3,
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white, width: 1.5),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: const Text(
-                            '25',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
+                        child: const TimeButton(
+                          setting: '25',
+                          isSetted: true,
                         ),
                       ),
                       TextButton(
                         onPressed: () {},
-                        child: Container(
-                          padding: const EdgeInsets.only(
-                            top: 3,
-                            left: 12,
-                            right: 12,
-                            bottom: 3,
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white, width: 1.5),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: const Text(
-                            '30',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
+                        child: const TimeButton(
+                          setting: '30',
+                          isSetted: false,
                         ),
                       ),
                       TextButton(
                         onPressed: () {},
-                        child: Container(
-                          padding: const EdgeInsets.only(
-                            top: 3,
-                            left: 12,
-                            right: 12,
-                            bottom: 3,
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white, width: 1.5),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: const Text(
-                            '15',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Container(
-                          padding: const EdgeInsets.only(
-                            top: 3,
-                            left: 12,
-                            right: 12,
-                            bottom: 3,
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white, width: 1.5),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: const Text(
-                            '35',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
+                        child: const TimeButton(
+                          setting: '35',
+                          isSetted: false,
                         ),
                       ),
                     ],
