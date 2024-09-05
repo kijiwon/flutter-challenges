@@ -11,22 +11,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late Timer timer;
   static const fifteen = 900;
   static const twenty = 1200;
   static const twentyFive = 1500;
   static const thirty = 1800;
   static const thirtyFive = 2100;
+  static const breakTime = 300;
+
   bool isRunning = false;
   int totalRounds = 0;
   int totalGoals = 0;
-
+  bool isBreaking = false;
+  late Timer timer;
   // 초기값은 25분
   int totalSeconds = twentyFive;
   // 유저가 누른 시간
   int settingSeconds = twentyFive;
   // 버튼
   int settingButton = twentyFive;
+
+  int breakingTime = breakTime;
 
   // 초 포맷
   String format(int seconds) {
@@ -46,21 +50,36 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void onTick(Timer timer) {
     if (totalSeconds == 0) {
-      setState(() {
-        totalRounds++;
-        isRunning = false;
-        totalSeconds = settingSeconds;
-      });
       if (totalRounds == 2) {
         setState(() {
           totalGoals++;
           totalRounds = 0;
         });
       }
+      setState(() {
+        totalRounds++;
+        isRunning = false;
+        isBreaking = true;
+        totalSeconds = settingSeconds;
+      });
       timer.cancel();
     } else {
       setState(() {
         totalSeconds--;
+      });
+    }
+  }
+
+  void onBreakTick(Timer timer) {
+    if (breakingTime == 0) {
+      setState(() {
+        isRunning = false;
+        isBreaking = false;
+        breakingTime = breakTime;
+      });
+    } else {
+      setState(() {
+        breakingTime--;
       });
     }
   }
@@ -71,6 +90,17 @@ class _HomeScreenState extends State<HomeScreen> {
       onTick,
     );
     setState(() {
+      isRunning = true;
+    });
+  }
+
+  void onBreakPressed() {
+    timer = Timer.periodic(
+      const Duration(seconds: 1),
+      onBreakTick,
+    );
+    setState(() {
+      isBreaking = true;
       isRunning = true;
     });
   }
@@ -103,10 +133,43 @@ class _HomeScreenState extends State<HomeScreen> {
                 fontWeight: FontWeight.w700,
               ),
             ),
+            Container(
+              alignment: Alignment.bottomCenter,
+              margin: const EdgeInsets.only(
+                top: 10,
+              ),
+              padding: const EdgeInsets.only(
+                top: 5,
+                bottom: 5,
+              ),
+              decoration: BoxDecoration(
+                border: isBreaking
+                    ? Border.all(
+                        color: Colors.white,
+                      )
+                    : null,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: isBreaking
+                  ? const Text(
+                      'Breaking Time',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w800,
+                        color: Color.fromARGB(181, 58, 0, 192),
+                      ),
+                    )
+                  : const Text(
+                      '',
+                      style: TextStyle(
+                        fontSize: 22,
+                      ),
+                    ),
+            ),
             Flexible(
               flex: 2,
               child: Container(
-                alignment: Alignment.bottomCenter,
+                alignment: Alignment.center,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -120,7 +183,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Text(
-                        format(totalSeconds).substring(0, 2),
+                        isBreaking
+                            ? format(breakingTime).substring(0, 2)
+                            : format(totalSeconds).substring(0, 2),
                         style: TextStyle(
                           color: Theme.of(context).scaffoldBackgroundColor,
                           fontSize: 60,
@@ -150,7 +215,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Text(
-                        format(totalSeconds).substring(3, 5),
+                        isBreaking
+                            ? format(breakingTime).substring(3, 5)
+                            : format(totalSeconds).substring(3, 5),
                         style: TextStyle(
                           color: Theme.of(context).scaffoldBackgroundColor,
                           fontSize: 60,
@@ -161,9 +228,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 50,
             ),
             Flexible(
               flex: 2,
@@ -225,7 +289,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             .withOpacity(0.2),
                         borderRadius: BorderRadius.circular(50)),
                     child: IconButton(
-                      onPressed: isRunning ? onPausePressed : onStartPressed,
+                      onPressed: isRunning
+                          ? onPausePressed
+                          : isBreaking
+                              ? onBreakPressed
+                              : onStartPressed,
                       icon: Icon(
                         isRunning ? Icons.pause : Icons.play_arrow_rounded,
                       ),
