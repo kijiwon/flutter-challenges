@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: const Color.fromARGB(255, 255, 72, 59),
           textTheme: const TextTheme(
             headlineLarge: TextStyle(
-              color: Colors.white,
+              color: Colors.red,
             ),
           ),
           cardColor: Colors.white),
