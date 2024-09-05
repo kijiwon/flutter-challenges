@@ -72,8 +72,8 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Padding(
         padding: const EdgeInsets.only(
           top: 70,
-          right: 20,
-          left: 20,
+          right: 35,
+          left: 35,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
               style: TextStyle(
                 color: Theme.of(context).cardColor,
                 fontSize: 18,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w700,
               ),
             ),
             Flexible(
