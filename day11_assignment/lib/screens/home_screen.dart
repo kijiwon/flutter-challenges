@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:day11_assignment/widget/timeButton.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +16,8 @@ class _HomeScreenState extends State<HomeScreen> {
   static const twentyFive = 1500;
   static const thirty = 1800;
   static const thirtyFive = 2100;
+  late Timer timer;
+  bool isRunning = false;
 
   // 초기값은 25분
   int totalSeconds = twentyFive;
@@ -30,9 +34,34 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // time setting
   void onTimePressed(int settedTime) {
+    timer.cancel();
     setState(() {
       totalSeconds = settedTime;
       settingSeconds = settedTime;
+      isRunning = false;
+    });
+  }
+
+  void onTick(Timer timer) {
+    setState(() {
+      totalSeconds--;
+    });
+  }
+
+  void onStartPressed() {
+    timer = Timer.periodic(
+      const Duration(seconds: 1),
+      onTick,
+    );
+    setState(() {
+      isRunning = true;
+    });
+  }
+
+  void onPausePressed() {
+    timer.cancel();
+    setState(() {
+      isRunning = false;
     });
   }
 
@@ -166,6 +195,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ],
+                  ),
+                  IconButton(
+                    onPressed: isRunning ? onPausePressed : onStartPressed,
+                    icon: Icon(
+                      isRunning ? Icons.pause : Icons.play_arrow_rounded,
+                    ),
+                    color: Colors.white,
+                    iconSize: 80,
                   )
                 ],
               ),
