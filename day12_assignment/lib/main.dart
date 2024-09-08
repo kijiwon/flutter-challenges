@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:day12_assignment/services/api_service.dart';
 
 void main() {
-  ApiService().getPopularMovies();
+  ApiService().getComingSoonMovies();
   runApp(const MyApp());
 }
 
